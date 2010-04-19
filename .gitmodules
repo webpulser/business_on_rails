@@ -1,0 +1,6 @@
+[submodule "vendor/plugins/forgeos_core"]
+	path = vendor/plugins/forgeos_core
+	url = http://src.forgeos.com/forgeos/core
+[submodule "vendor/plugins/forgeos_cms"]
+	path = vendor/plugins/forgeos_cms
+	url = http://src.forgeos.com/forgeos/cms

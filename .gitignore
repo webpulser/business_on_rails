@@ -28,3 +28,7 @@ public/stylesheets/jstree
 public/stylesheets/sass/admin
 public/stylesheets/sass/jstree
 public/stylesheetsdataTables
+vendor/plugins/engines
+vendor/plugins/attachment_fu/
+vendor/plugins/localized_dates/
+vendor/plugins/open_flash_chart/
