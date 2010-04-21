@@ -9,4 +9,6 @@ require File.join(File.dirname(__FILE__), 'boot')
 Rails::Initializer.run do |config|
   config.gem 'acts-as-taggable-on', :source => 'http://gemcutter.org'
   config.plugins = [ :forgeos_core, :all ]
+
+  config.gem 'errornot_notifier'
 end
