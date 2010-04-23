@@ -16,20 +16,21 @@ dt{padding-left:10px;}
 
 
 .icons{background: url(/images/csg-4bd18a026838c.png) no-repeat top left;}
-.account { background-position: 0 0; width: 13px; height: 12px;display:inline-block;margin-top:10px;margin-left:5px;padding-right:5px; } 
+.account { background-position: 0 0; width: 13px; height: 12px;display:inline-block;margin-left:5px;padding-right:5px; } 
 .black-arrow { background-position: 0 -62px; width: 19px; height: 19px; float:left;padding-bottom:10px;padding-left:5px;margin-left:10px;} 
 .blue-arrow { background-position: 0 -129px; width: 19px; height: 19px;margin-top:12px;margin-left:10px;} 
 .checked { background-position: 0 -200px; width: 16px; height: 16px; } 
 .dt-arrow { background-position: 0 -266px; width: 7px; height: 8px; } 
-.home { background-position: 0 -324px; width: 14px; height: 14px; display:inline-block;margin-top:10px;margin-left:5px;padding-right:5px;} 
-.mail { background-position: 0 -388px; width: 14px; height: 9px; display:inline-block;margin-top:10px;margin-left:5px;padding-right:5px;} 
+.home { background-position: 0 -324px; width: 14px; height: 14px; display:inline-block;margin-left:5px;padding-right:5px;} 
+.mail { background-position: 0 -388px; width: 14px; height: 9px; display:inline-block;margin-left:5px;padding-right:5px;} 
 
 .avantages{}
 .avantages li{list-style-image:url(/images/checked.png);background-repeat:no-repeat;font-size:1.2em;padding-top:5px;padding-bottom:18px;}
 .actus{}
 
 .header{width:100%;display:inline;}
-.header li{display:inline;font-weight:1.2em;list-style-type:none;no-repeat; scroll 0 0;padding:0 0 0 20px;}
+.header ul{margin: 10px 0 0 0; padding:0}
+.header li{display:inline;font-weight:1.2em;list-style-type:none;no-repeat; scroll 0 0;}
 .header p{margin-left:5px;font-size:1.2em;}
 .header span{margin-bottom:5px;}
 .logo{background-image:url(/images/logo-bor.png);background-repeat:no-repeat;height:123px;width:112px;margin-top:10px;}
@@ -39,7 +40,7 @@ dt{padding-left:10px;}
 .red-button{background-image:url(/images/btn.png);background-repeat:repeat-x;float:left;height:32px;width:128px;margin-bottom:5px;margin-top:5px;}
 
 .btn{text-align:center;height:32px;padding:0;margin:0;position:relative;display:block;}
-.btn a{color:white;font-size:2.0em;line-height:28px;}
+.btn a{color:white;font-size:19px;line-height:28px;}
 .box{width:278px;margin-left:auto;margin-right:auto;float:left;position:relative;margin-left:10px;display:inline;}
 
 .border{border: 1px solid #DEAF7A;background-color:white;margin-bottom:20px;padding:10px;margin-top:0;margin-left:0;margin-right:0;width:90%;min-height:180px;}
@@ -50,4 +51,13 @@ dt{padding-left:10px;}
 .border img{margin:10px;border:none;position:center;}
 
 .footer{background-image:url(/images/btn.png);background-repeat:repeat-x;float:left;height:32px;width:928px;margin-bottom:5px;margin-top:5px;}
-.footer a {text-decoration:none;color:white;font-size:1.4em;padding-right:10px;}
+.footer ul{
+  display: inline;
+  margin:0;
+  padding:0;
+}
+.footer li{
+  display: inline;
+  margin:0 5px;
+}
+.footer a {text-decoration:none;color:white;font-size:1.4em;}

@@ -1,4 +1,4 @@
-!!!
+!!!1.1
 %html{ 'xml:lang' => 'fr', :lang => 'fr', :xmlns => 'http://www.w3.org/1999/xhtml' }
   %head
     %title
@@ -8,76 +8,79 @@
     %link{ :href => 'favicon.ico', :rel => 'shortcut icon', :type => 'image/x-icon' }
     = stylesheet_link_tag '/stylesheets/bor/base.css'
     = stylesheet_link_tag '/stylesheets/bor/960.css'
-%body
-  .container_12
-    .grid_12.header.alpha
-      .alpha.omega.grid_2
-        .logo
-      .prefix_6.grid_4.alpha.right.omega
-        - [["home", "Accueil", "#"],        |
-           ["account", "Mon compte", "#"],  |
-           ["mail", "Contactez-nous", "#"], |
-          ].each do |c, t, h|     |
-          %span
-            .icons{ :class => "#{c}" }
-            %a.brown{ :href => "#{h}" }
-              = t
+  %body
+    .container_12
+      .grid_12.header.alpha
+        .alpha.omega.grid_2
+          .logo
+        .prefix_6.grid_4.alpha.right.omega
+          %ul
+            - [["home", "Accueil", "#"],        |
+               ["account", "Mon compte", "#"],  |
+               ["mail", "Contactez-nous", "#"], |
+              ].each do |c, t, h|     |
+              %li
+                .icons{ :class => "#{c}" }
+                %a.brown{ :href => "#{h}" }
+                  = t
 
-      .grid_2
-      - [["Ruby on Rails", "Découvrez le framework de développement agile"], |
-         ["Témoignages", "Pourquoi ils ont adopté Ruby on Rails ?"],         |
-         ["Annuaire", "Sites et applications réalisées avec Ruby on Rails"], |
-         ["Actualités", "Dernières news autour du framework"],               |
-         ["Job on Rails", "Offres et demande d’emploi d’experts"]            |
-        ].each do |key, value|                                               |
         .grid_2
-          .btn
-            .red-button-left
-            .red-button
-              %a{ :href => '#' }
-                = key
-            .red-button-right
-          %p.brown.bold{ :style => 'font-weight:1.4em;' }
-            = value
-  .clear
-  .grid_12
-    &nbsp;
-  .clear
-  = yield
-  .container_12
+        - [["Ruby on Rails", "Découvrez le framework de développement agile"], |
+           ["Témoignages", "Pourquoi ils ont adopté Ruby on Rails ?"],         |
+           ["Annuaire", "Sites et applications réalisées avec Ruby on Rails"], |
+           ["Actualités", "Dernières news autour du framework"],               |
+           ["Job on Rails", "Offres et demande d’emploi d’experts"]            |
+          ].each do |key, value|                                               |
+          .grid_2
+            .btn
+              .red-button-left
+              .red-button
+                %a{ :href => '#' }
+                  = key
+              .red-button-right
+            %p.brown.bold{ :style => 'font-weight:1.4em;' }
+              = value
+    .clear
     .grid_12
-      .btn
-        .red-button-left
-        .footer.bold
-          - ["A propos", "Participer", "Demander une interview", "Nous contacter", "Mentions légales"].each do |a|
-            %a{ :href => "#" }
-              = a
-        .red-button-right
+      &nbsp;
+    .clear
+    = yield
+    .container_12
+      .grid_12
+        .btn
+          .red-button-left
+          .footer.bold
+            %ul
+              - ["A propos", "Participer", "Demander une interview", "Nous contacter", "Mentions légales"].each do |a|
+                %li
+                  %a{ :href => "#" }
+                    = a
+          .red-button-right
 
-//  %body
-//    .wrapper
-//      .header
-//        %img#logo{ :alt => 'Business on Rails' }
-//        .menu#first-menu
-//          %ul
-//            %li.first.home
-//              %a{ :href => '/home' }
-//                Accueil
-//            %li.profile
-//              %a{ :href => '#' }
-//                Mon compte
-//            %li.last.contact
-//              %a{ :href => '#' }
-//                Contactez-nous
-//        - menu2 = Menu.find_by_single_key('main-menu2')
-//        - if menu2
-//          .main-menu
-//            = display_menu(menu2, :li_current_class => 'active')
-//      .center
-//        = yield
-//        .clear
-//
-//      .footer
-//        - footer_menu = Menu.find_by_single_key('footer-menu')
-//        - if footer_menu
-//          = display_menu(footer_menu, :li_current_class => 'active')
+  //  %body
+  //    .wrapper
+  //      .header
+  //        %img#logo{ :alt => 'Business on Rails' }
+  //        .menu#first-menu
+  //          %ul
+  //            %li.first.home
+  //              %a{ :href => '/home' }
+  //                Accueil
+  //            %li.profile
+  //              %a{ :href => '#' }
+  //                Mon compte
+  //            %li.last.contact
+  //              %a{ :href => '#' }
+  //                Contactez-nous
+  //        - menu2 = Menu.find_by_single_key('main-menu2')
+  //        - if menu2
+  //          .main-menu
+  //            = display_menu(menu2, :li_current_class => 'active')
+  //      .center
+  //        = yield
+  //        .clear
+  //
+  //      .footer
+  //        - footer_menu = Menu.find_by_single_key('footer-menu')
+  //        - if footer_menu
+  //          = display_menu(footer_menu, :li_current_class => 'active')
