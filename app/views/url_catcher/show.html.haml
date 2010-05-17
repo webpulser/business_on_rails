@@ -1,0 +1,19 @@
+- if @page
+  - case @page.single_key
+  - when 'home'
+    .grid_8
+      .border.padding
+        = @page.content
+    .grid_4
+      - benefits = Block.find_by_single_key('benefits')
+      - if benefits
+        .border.avantages.padding
+          = benefits.content
+  - else
+    .grid_12
+      .border.padding
+        %h1
+          = @page.title
+        = @page.content
+- else
+  = I18n.t('page_not_found').capitalize
