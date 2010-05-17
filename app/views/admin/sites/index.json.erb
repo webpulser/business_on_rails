@@ -1,0 +1,33 @@
+<%
+  output = {
+    :iTotalDisplayRecords => @sites.total_entries || 0,
+    :aaData => @sites.collect do |site|
+
+      picture = site.pictures.first.public_filename(:thumb) if site.pictures.first
+      klass = site.active? ? 'see-on' : 'see-off'
+      link_id = "site_#{site.id}"
+
+      [
+        content_tag(:div, content_tag(:div,'',:class=>'handler') + image_tag(picture || 'admin/no-image.png'), :id => link_id, :class => 'handler_container'),
+        content_tag(:div, site.url),
+        content_tag(:div, link_to(site.name, [:admin, site]), :class => 'site-name'),
+        link_to_remote('', :url => activate_admin_site_path(site),
+         :complete => "toggleActivate('#show_#{link_id}')",
+         :html => {
+           :class => "small-icons #{klass}",
+           :id => "show_#{link_id}"
+        }),
+        link_to('', [:duplicate, :admin, site], :class => 'small-icons duplicate-link') +
+        link_to('', [:edit, :admin, site], :class => 'small-icons edit-link') +
+        link_to_remote('', :url => [:admin, site],
+          :method => :delete,
+          :confirm => I18n.t('site.destroy.confirm').capitalize,
+          :success => "removedataTablesRow('#destroy_#{link_id}')",
+          :html => {
+          :class => 'small-icons destroy-link', :id => "destroy_#{link_id}"
+        })
+      ]
+    end
+  }
+-%>
+<%= output.to_json -%>

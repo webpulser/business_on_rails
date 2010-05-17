@@ -1,0 +1,13 @@
+= render :partial => 'admin/sidebars/left_sidebar', :locals => {:icon_class => 'sites', :sidebar_title => 'site.all', :tree_id =>'site-tree' }
+#content.grid_12.alpha.omega
+  .backgrounds.header
+    = link_to content_tag(:span,t('site.create.action').capitalize, :class=>'big-icons create-site'), new_admin_site_path, :class=>'backgrounds action-button'
+    #search.right= fg_search
+    .backgrounds.search-form
+  .content-background
+  %table#table.datatable.draggable_rows
+    %tbody
+      %tr
+        %td
+
+= dataTables_tag :url => admin_sites_path(:format => :json), :columns => ["{'sClass': 'image_site_td', 'bSearchable':false,'bSortable':false}","{'sClass': 'biggest_td', 'sTitle':'#{t('site.url')}'}","{'sClass': 'biggest_td', 'sTitle':'#{t(:name)}'}","{'sClass': 'see_td', 'sTitle':'#{t(:show)}'}","{ 'sClass': 'actions-td', 'bSortable': false}"]

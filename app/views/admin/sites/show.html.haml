@@ -1,0 +1,88 @@
+.backgrounds.big-header
+  %h1= @site.name
+  .interact-links
+    = link_to t('site.update.action').capitalize, [:edit, :admin, @site], :class => 'backgrounds interact-button'
+    = t('or')
+    = link_to t('back_to_catalog').capitalize, admin_sites_path, :class => 'back-link'
+
+#content.grid_16.alpha.omega
+  #site-see.grid_12.alpha
+    .grid_8.omega
+      .description
+        %em
+          = t('description').capitalize
+          \:
+        = @site.description
+    #site-images.grid_4.omega
+      %ul
+        - @site.pictures.each do |picture|
+          - if picture == @site.pictures.first
+            %li.first-image
+              = image_tag picture.public_filename('')
+              .featured= t('media.picture.featured')
+          - else
+            %li= image_tag picture.public_filename('')
+        %li.clear
+          &nbsp;
+    .clear
+    
+    .option-panel.open
+      .backgrounds.content-header
+        &nbsp;
+      %span.panel= t('media.linked', :count => 2)
+      .option-panel-content
+        .grid_9
+          - @site.attachments.all(:conditions => '`attachments`.`type` != "Picture"').each do |attachment|
+            .block-container
+              %span.block-type= attachment.type.to_s.upcase
+              %span.block-name
+                = attachment.filename
+                %span.file-size= "- #{attachment.size / 1024} Ko"
+              - unless attachment == @site.attachments.last
+                %hr.block-separator 
+        .clear
+  #right-sidebar.grid_4.omega
+    .step
+      = link_to t('site.duplicate').capitalize, duplicate_admin_site_path(@site), :class => 'small-icons duplicate'
+    .step.open
+      %a.small-icons.step-title{:href => '#'}= t('site.associated_collection', :count => 2).capitalize
+      #association-tree.inner-step.init-tree
+        Coming Soon
+
+    .step.open
+      %a.small-icons.step-title{:href => '#'}= t('tag', :count => 2).capitalize
+      .inner-step.tags
+        - @site.tags.each do |tag|
+          %span= tag.name
+        .clear
+    .step.open
+      %a.small-icons.step-title{ :href => '#' }
+        = t('meta_description').capitalize
+      .inner-step.meta
+        %p
+          %span
+            = t('title').capitalize
+            \:
+          = @site.meta_info.title if @site.meta_info
+        %p
+          %span
+            = t('description').capitalize
+            \:
+          = @site.meta_info.description if @site.meta_info
+        %p
+          %span
+            = t('keyword', :count => 2).capitalize
+            \:
+          = @site.meta_info.keywords if @site.meta_info
+  
+    .step.disabled
+      %a.small-icons.step-title{ :href => "#" }
+        Graphic template
+      .inner-step.glossy
+        %select{ :name => "design" }
+          %option{ :selected => "selected", :value => "default" }
+            Corporate blue design
+          %option{ :value => "no" }
+            Corporate green design
+      .clear
+  .clear

@@ -1,0 +1,100 @@
+- form_for [:admin, site], :html => { :id => 'wrap' } do |f|
+  .backgrounds.big-header
+    = f.text_field :name, :class => 'element_form_name'
+    .interact-links
+      = fg_submit_tag(site.new_record? ? 'site.create.action' : 'save_changes')
+      = t('or')
+      = link_to t('cancel').capitalize, admin_sites_path, :class => 'back-link'
+
+  #content.grid_16.alpha.omega
+    #site.grid_12.alpha
+      .grid_9.omega
+        %p
+        = f.label :url, t('site.url')
+        %div
+          = f.text_field :url
+      #site-images.grid_3.omega
+        #featured-picture
+          = t('media.picture.featured').capitalize
+        = hidden_field_tag "#{f.object_name}[attachment_ids][]"
+        %ul.sortable
+          - site.pictures.each do |picture|
+            %li{ :class => (picture.id == site.picture_ids.first) ? 'first-image' : ''}
+              = link_to_function '', "$(this).parents('li').remove(); check_site_first_image() ", :title => t('media.picture.destroy.confirm').capitalize, :class => 'big-icons trash'
+              = link_to '', [:edit, :admin, picture], :class => 'big-icons edit'
+              = hidden_field_tag "#{f.object_name}[attachment_ids][]", picture.id, :id => "attachment_#{picture.id}"
+              = image_tag picture.public_filename('')
+              .handler
+                .inner
+          %li.clear
+        = link_to content_tag(:span, t('media.picture.add').capitalize, :class=>'big-icons add-picture'), '#', :class=>'backgrounds button', :id => 'add-picture'
+      .clear
+      .grid_12.omega
+        = f.label :description, t('description').capitalize
+        %div{ :style => 'clear: left;'}
+          = f.text_area :description, :cols => 80, :class => 'mceEditor'
+      .option-panel
+        .backgrounds.content-header
+        = link_to I18n.t('media.linked'), '#', :class => 'small-icons panel'
+        .option-panel-content
+          %a#add-file.backgrounds.button.right{ :href => "#" }
+            %span.big-icons.add-media
+              = I18n.t('add_file').capitalize
+          #site-files.grid_9.sortable
+            - site.attachments.all(:conditions => '`attachments`.`type` != "Picture"').each do |attachment|
+              = block_container f.object_name, 'attachment', attachment do
+                = attachment.filename
+                %span.file-size
+                = "- #{attachment.size} Ko"
+    #right-sidebar.grid_4.omega
+
+      .step.open
+        = link_to(t('site.associated_collection', :count => 2), '#', :class => 'small-icons step-title')
+        #association-site-tree.inner-step.init-tree
+          = hidden_field_tag "#{f.object_name}[site_category_ids][]"
+          %ul
+            = render :partial => 'admin/categories/associated_elements', :locals => { :association_id => 'site_category_ids', :element => site, :category_ids => site.site_category_ids, :categories => SiteCategory.roots }
+          .clear
+      .step.open
+        = link_to t(:tag, :count => 2), '#', :class => 'small-icons step-title'
+        .inner-step.tags
+          .wrap_tags
+            = hidden_field_tag 'tag_list[]', ''
+            %input#tag.backgrounds{ :name => "tag", :type => "text", :title => t('tag_enter').capitalize, :class => 'defaultValue' }
+            - site.tag_list.each do |tag|
+              %span
+                = tag
+                = hidden_field_tag 'tag_list[]', tag
+                = link_to '&nbsp;', '#', :class => 'big-icons gray-destroy'
+          .clear
+      .step.open
+        = link_to t(:meta_description, :count => 2), '#', :class => 'small-icons step-title'
+        .inner-step.meta
+          //- site.build_meta_info unless site.meta_info
+          //- f.fields_for :meta_info do |meta_info|
+          //  %p
+          //    %span
+          //      = t('title').capitalize
+          //      \:
+          //    = meta_info.text_area :title, :class => 'text'
+          //  %p
+          //    %span
+          //      = t('description').capitalize
+          //      \:
+          //    = meta_info.text_area :description, :class => 'text'
+          //  %p
+          //    %span
+          //      = t('keyword', :count => 2).capitalize
+          //      \:
+          //    = meta_info.text_area :keywords, :class => 'text'
+      .step.disabled
+        = link_to t(:graphic_template, :count => 1), '#', :class => 'small-icons step-title'
+        .inner-step.glossy
+          %select{ :name => "design" }
+            %option{ :selected => "selected", :value => "default" }
+              Corporate blue design
+            %option{ :value => "no" }
+              Corporate green design
+        .clear
+    .clear
+  = render :partial => 'attachments_popups', :locals => {:form => f}
