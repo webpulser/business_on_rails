@@ -1,0 +1,21 @@
+<%
+  output = {
+    :iTotalDisplayRecords => @sites.length,
+    :step => @step,
+    :aaData => @sites.collect do |site|
+
+      pictures = []
+      site.pictures.each do |p|
+        pictures << p.public_filename(:normal)
+      end
+      klass = site.active? ? 'see-on' : 'see-off'
+      {
+        :id => site.id,
+        :pictures => pictures,
+        :title => site.name,
+        :url => site.url
+      }
+    end
+  }
+-%>
+<%= output.to_json -%>

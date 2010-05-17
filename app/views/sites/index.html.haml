@@ -1,0 +1,84 @@
+- content_for :js, (javascript_include_tag %w(jquery front/sites))
+.grid_12
+  #directory.border
+    .left
+      %h1
+        = t('directory.title')
+      %h2
+        = t('directory.subtitle')
+    .right
+      = link_to t('site.create.link').humanize, new_site_path, :class => "backgrounds action-button"
+    .clear
+
+    %ul#categories-menu.backgrounds
+      %li{ :class => "#{'current' unless params[:category_id]}" }
+        = link_to t('site.all_categories'), { :controller => 'sites' }
+      - SiteCategory.roots.each do |category|
+        %li{ :class => "#{'current' if params[:category_id] == "#{category.id}"}" }
+          %a{ :href => "?category_id=#{category.id}" }
+            = category.name
+      .clear
+
+%ul#site-list
+  - @sites.each do |site|
+    %li
+      .grid_6
+        .border
+          .carrousel
+            %ul
+              - #TODO add carrousel
+              - site.pictures.each do |picture|
+                %li
+                  = image_tag picture.public_filename
+          .nav
+            .left
+              %a{ :href => "#" }
+                previous
+            .center
+            .right
+              %a{ :href => "#" }
+                next
+            .clear
+          .description.padding
+            .left
+              %a.title{ :href => "#{site.url}" }
+                = site.name
+              - if site.site_categories
+                - category = site.site_categories.first
+                %a.category{ :href => "?category_id=#{category.id}" }
+                  = category.name
+            .right
+              - #TODO add owner avatar
+  .clear
+
+  %ul.pages
+    - _params = {}
+    - [:category_id, :iDisplayLength].each do |sym|
+      - _params[sym] = params[sym] if params[sym]
+    - last_page = @nb_results/@per_page
+    // TODO map params => url
+    - base_url = "?"
+    - base_url += "#{_params.to_query}&" unless _params.empty?
+    - if @page and @page > 1
+      %li
+        %a{ :href => "#{base_url}iDisplayStart=#{@page-1}", :title => "#{t('pages.previous')}"}
+          = "<"
+    - (1..last_page).each do |num|
+      - classes = []
+      - classes << 'first' if num == 1
+      - classes << 'current' if num == @page
+      - classes << 'last' if num == @nb_results
+      %li{ :class => "#{classes*' '}"}
+        %a{ :href => "#{base_url}iDisplayStart=#{num}", :title => "#{t('pages.page')}"}
+          = num
+    - if @page < last_page
+      %li
+        %a{ :href => "#{base_url}iDisplayStart=#{@page+1}", :title => "#{t('pages.next')}" }
+          = ">"
+  //    %tr
+  //      %td
+  //        = link_to 'Show', site
+  //      %td
+  //        = link_to 'Edit', edit_site_path(site)
+  //      %td
+  //        = link_to 'Destroy', site, :confirm => 'Are you sure?', :method => :delete

@@ -1,0 +1,14 @@
+%h2
+  Présentez votre site
+- form_for @site do |f|
+  - [:name, :url, :description].each do |property|
+    .street-input
+      = f.label property, t("site.#{property}").humanize, :style => "display: block"
+      = f.text_field property
+  = f.label :site_categories, t('site.category').humanize, :style => "display: block"
+  = f.select :site_category_ids, SiteCategory.roots.collect {|c| [ c.name, c.id ] }
+  %fieldset
+    %legend
+      = t('site.images').humanize
+    = link_to_function t('site.add_image').humanize, 'null'
+  = f.submit t("site.#{action.downcase}.action").humanize, :action => action, :class => "backgrounds action-button"
