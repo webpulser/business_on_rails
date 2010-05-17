@@ -1,0 +1,7 @@
+en:
+  project_name: "Business on Rails"
+  back_office:
+    menu:
+      sites: Sites
+  all_categories: All
+  add_site: "Ajouter un site"

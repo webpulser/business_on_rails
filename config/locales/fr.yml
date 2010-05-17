@@ -1,0 +1,45 @@
+fr:
+  project_name: "Business on Rails"
+  back_office:
+    menu:
+      sites: Sites
+  site:
+    one: site
+    other: sites
+    all: tous les sites
+    category: type de site
+    not_found: aucun site trouvé
+    associated_collection:
+      one: catégorie associée
+      other: catégories associées
+    duplicate: dupliquer le site
+    not_exist: "le site sélectionné n'existe pas"
+    new:
+      title: "Ajouter un site à l'annuaire"
+    edit:
+      title: "Édition d'un site"
+    create:
+      success: le site a bien été créé
+      failed: un problème est survenu lors de la création du site
+      action: soumettre un site
+      link: ajouter un site
+    update:
+      success: le site a bien été mis à jour
+      failed: un problème est survenu lors de la mise à jour du site
+      action: éditer le site
+    destroy:
+      success: le site a bien été supprimé
+      failed: un problème est survenu lors de la suppression du site
+      confirm: êtes-vous sûr de vouloir supprimer ce site ?
+      action: supprimer le site
+    url: Adresse du site
+    description: description du site
+    name: nom du site
+    all_categories: Toutes les catégories
+    previous: Précedent
+    next: Suivant
+    images: images du site
+    add_image: ajouter une image
+  directory:
+    title: "Annuaire Business on Rails"
+    subtitle: "Sélection d'applications et sites web créés avec Ruby on Rails"
