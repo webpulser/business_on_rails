@@ -52,6 +52,7 @@
               - #TODO add owner avatar
   .clear
 
+  // XXX Can we use will_paginate @sites ??
   %ul.pages
     - _params = {}
     - [:category_id, :iDisplayLength].each do |sym|
@@ -77,10 +78,3 @@
       %li
         %a{ :href => "#{base_url}iDisplayStart=#{@page+1}", :title => "#{t('pages.next')}" }
           = ">"
-  //    %tr
-  //      %td
-  //        = link_to 'Show', site
-  //      %td
-  //        = link_to 'Edit', edit_site_path(site)
-  //      %td
-  //        = link_to 'Destroy', site, :confirm => 'Are you sure?', :method => :delete

@@ -23,7 +23,6 @@ class SitesController < ApplicationController
   end
 
   def new
-    puts("\033[01;33mEERRRRRRRRRRR::::#{@errors}\033[0m")
     @site = Site.new
     respond_to do |format|
       format.html
