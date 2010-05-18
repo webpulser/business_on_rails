@@ -1,6 +1,8 @@
 class Site < ActiveRecord::Base
+  belongs_to :user
   translates :name, :url, :description
   validates_presence_of :name, :url
+  validates_associated :user
 
   acts_as_taggable
 
@@ -10,9 +12,5 @@ class Site < ActiveRecord::Base
   def activate
     update_attribute(:active, !self.active)
   end
-
-  # URI cf RFC2396
-  validates_format_of :url, :with => /^(([^:\/?#]+):)?(\/\/([^\/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/
-
 
 end

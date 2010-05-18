@@ -1,5 +1,6 @@
 class SitesController < ApplicationController
-  before_filter :get_site, :only => [:destroy, :edit, :show, :update]
+  before_filter :get_site, :only => [:show]
+  before_filter :get_user_site, :only => [:edit, :update, :destroy]
 
   def index
     @per_page = 2
@@ -22,7 +23,7 @@ class SitesController < ApplicationController
   end
 
   def new
-    #TODO check identity
+    puts("\033[01;33mEERRRRRRRRRRR::::#{@errors}\033[0m")
     @site = Site.new
     respond_to do |format|
       format.html
@@ -30,7 +31,6 @@ class SitesController < ApplicationController
   end
 
   def edit
-    #TODO check identity
   end
 
   def create
@@ -48,7 +48,6 @@ class SitesController < ApplicationController
   end
 
   def update
-    #TODO check identity
     respond_to do |format|
       if @site.update_attributes(params[:site])
         flash[:notice] = t('site.update.success').capitalize
@@ -61,7 +60,6 @@ class SitesController < ApplicationController
   end
 
   def destroy
-    #TODO check identity
     if @site.destroy
       flash[:notice] = t('site.destroy.success').capitalize
     else
@@ -76,6 +74,12 @@ private
 
   def get_site
     @site = Site.find(params[:id])
+  end
+
+  def get_user_site
+    return redirect_to login_path if current_user.nil?
+    @site = Site.find_by_id_and_user_id params[:id], current_user.id
+    return redirect_to root_path if @site.nil?
   end
 
   def paginate

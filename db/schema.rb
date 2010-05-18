@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100420144825) do
+ActiveRecord::Schema.define(:version => 20100518144730) do
 
   create_table "actualities", :force => true do |t|
     t.boolean  "active",              :default => true
@@ -354,6 +354,7 @@ ActiveRecord::Schema.define(:version => 20100420144825) do
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "statistic_counters", :force => true do |t|
