@@ -3,9 +3,9 @@
   #directory.border
     .left
       %h1
-        = t('directory.title')
+        = t('site.directory.title')
       %h2
-        = t('directory.subtitle')
+        = t('site.directory.subtitle')
     .right
       = link_to t('site.create.link').humanize, new_site_path, :class => "backgrounds action-button"
     .clear
@@ -32,11 +32,11 @@
                   = image_tag picture.public_filename
           .nav
             .left
-              %a{ :href => "#" }
+              %a{ :href => "#", :title => "#{t('carrousel.previous')}" }
                 previous
             .center
             .right
-              %a{ :href => "#" }
+              %a{ :href => "#", :title => "#{t('carrousel.next')}" }
                 next
             .clear
           .description.padding
@@ -45,8 +45,9 @@
                 = site.name
               - if site.site_categories
                 - category = site.site_categories.first
-                %a.category{ :href => "?category_id=#{category.id}" }
-                  = category.name
+                - if category
+                  %a.category{ :href => "?category_id=#{category.id}" }
+                    = category.name
             .right
               - #TODO add owner avatar
   .clear
@@ -56,7 +57,8 @@
     - [:category_id, :iDisplayLength].each do |sym|
       - _params[sym] = params[sym] if params[sym]
     - last_page = @nb_results/@per_page
-    // TODO map params => url
+    // TODO limit page list
+    // TODO create helper
     - base_url = "?"
     - base_url += "#{_params.to_query}&" unless _params.empty?
     - if @page and @page > 1
@@ -69,7 +71,7 @@
       - classes << 'current' if num == @page
       - classes << 'last' if num == @nb_results
       %li{ :class => "#{classes*' '}"}
-        %a{ :href => "#{base_url}iDisplayStart=#{num}", :title => "#{t('pages.page')}"}
+        %a{ :href => "#{base_url}iDisplayStart=#{num}", :title => "#{t('pages.one')} #{num}"}
           = num
     - if @page < last_page
       %li
