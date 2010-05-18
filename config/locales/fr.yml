@@ -40,6 +40,17 @@ fr:
     next: Suivant
     images: images du site
     add_image: ajouter une image
-  directory:
-    title: "Annuaire Business on Rails"
-    subtitle: "Sélection d'applications et sites web créés avec Ruby on Rails"
+    directory:
+      title: "Annuaire Business on Rails"
+      subtitle: "Sélection d'applications et sites web créés avec Ruby on Rails"
+  contact:
+    message: message
+    send: envoyer
+  carrousel:
+    previous: image précédente
+    next: image suivante
+  pages:
+    one: page
+    many: pages
+    previous: page precédente
+    next: page suivante
