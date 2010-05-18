@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100419133245) do
+ActiveRecord::Schema.define(:version => 20100420144825) do
 
   create_table "actualities", :force => true do |t|
     t.boolean  "active",              :default => true
@@ -205,9 +205,9 @@ ActiveRecord::Schema.define(:version => 20100419133245) do
   create_table "meta_info_translations", :force => true do |t|
     t.integer  "meta_info_id"
     t.string   "locale"
+    t.text     "keywords"
     t.string   "title"
     t.text     "description"
-    t.text     "keywords"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -333,6 +333,27 @@ ActiveRecord::Schema.define(:version => 20100419133245) do
     t.text    "smtp_settings"
     t.text    "sendmail_settings"
     t.integer "address_id"
+  end
+
+  create_table "site_translations", :force => true do |t|
+    t.integer  "site_id"
+    t.string   "locale"
+    t.text     "description"
+    t.string   "url"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "site_translations", ["site_id"], :name => "index_site_translations_on_site_id"
+
+  create_table "sites", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.text     "description"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "statistic_counters", :force => true do |t|
