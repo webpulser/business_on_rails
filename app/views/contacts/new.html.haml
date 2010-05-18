@@ -1,0 +1,20 @@
+.grid_12
+  .border.padding
+    - p = Page.find_by_single_key 'contact'
+    = p.content if p
+    = error_messages_for :contact, :class => 'error'
+    .simple-form
+      - form_for(:contact, :url => contact_path) do |f|
+        %table
+          - %w( firstname lastname email ).each do |e|
+            %tr
+              %th
+                = f.label e, t(e).humanize
+              %td
+                = f.text_field e, :size => 20
+          %tr
+            %th
+              = f.label :message, t('contact.message').humanize
+            %td
+              = f.text_area :message, {:class => "text", :style => "height:160px"}
+        = f.submit t('contact.send').humanize

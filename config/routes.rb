@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :sites
+  map.resource :contact
 
   map.namespace :admin do |admin|
     admin.resources :sites, :member => { :activate => :post, :duplicate => :get}
