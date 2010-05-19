@@ -1,0 +1,7 @@
+%li
+  - if current_user
+    .icons{ :class => 'account' }
+    = link_to t('logout').humanize, logout_path, :class => 'brown'
+  - else
+    .icons{ :class => 'account' }
+    = link_to t('login').humanize, login_path, :class => 'brown'

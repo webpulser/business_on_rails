@@ -8,6 +8,7 @@
     %link{ :href => 'favicon.ico', :rel => 'shortcut icon', :type => 'image/x-icon' }
     = stylesheet_link_tag '/stylesheets/bor/base.css'
     = stylesheet_link_tag '/stylesheets/bor/960.css'
+    = javascript_include_tag %w(jquery front/inits)
     = yield :js
   %body
     .container_12
@@ -15,11 +16,11 @@
         .alpha.omega.grid_2
           .logo
         .grid_10
-          %ul.right
-            - [["home", "Accueil", "#{(Page.find_by_single_key 'home').url}"],        |
-               ["account", "Mon compte", "#"],  |
-               ["mail", "Contactez-nous", "#"], |
-              ].each do |c, t, h|               |
+          %ul#top-menu.right
+            - [["home", "Accueil", "#{Page.find_by_single_key('home').url}"], |
+               ["account", "Mon compte", "#"],                                |
+               ["mail", "Contactez-nous", "#"]                                |
+              ].each do |c, t, h|                                             |
               %li
                 .icons{ :class => "#{c}" }
                 %a.brown{ :href => "#{h}" }
@@ -28,7 +29,7 @@
         .grid_2
         - [["Ruby on Rails", "Découvrez le framework de développement agile", "#"],      |
            ["Témoignages", "Pourquoi ils ont adopté Ruby on Rails ?", "#"],              |
-           ["Annuaire", "Sites et applications réalisées avec Ruby on Rails", "/sites"], |
+           ["annuaire", "sites et applications réalisées avec ruby on rails", "/sites"], |
            ["Actualités", "Dernières news autour du framework", "#"],                    |
            ["Job on Rails", "Offres et demande d’emploi d’experts", "#"]                 |
           ].each do |t, d, h|                                                            |
