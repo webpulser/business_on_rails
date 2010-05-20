@@ -3,7 +3,7 @@ class SitesController < ApplicationController
   before_filter :get_user_site, :only => [:edit, :update, :destroy]
 
   def index
-    @per_page = 2
+    @per_page = 10
 
     respond_to do |format|
       format.html do

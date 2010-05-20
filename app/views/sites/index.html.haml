@@ -23,20 +23,19 @@
   - @sites.each do |site|
     %li
       .grid_6
-        .border
-          .carrousel
-            %ul
-              - #TODO add carrousel
+        .border.directory-item
+          .images
+            %ul.carousel
               - site.pictures.each do |picture|
                 %li
-                  = image_tag picture.public_filename
+                  = image_tag picture.public_filename :normal
           .nav
             .left
-              %a{ :href => "#", :title => "#{t('carrousel.previous')}" }
-                previous
+              %a.carousel-prev.disable{ :href => "#", :title => "#{t('carousel.previous')}" }
+                prev
             .center
             .right
-              %a{ :href => "#", :title => "#{t('carrousel.next')}" }
+              %a.carousel-next.disable{ :href => "#", :title => "#{t('carousel.next')}" }
                 next
             .clear
           .description.padding

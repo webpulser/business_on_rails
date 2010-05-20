@@ -15,29 +15,6 @@ ul#categories-menu, ul#site-list
       color: #d40600
 
 
-#site-list
-
-  .carrousel
-    height: 312px
-
-  .nav
-    height: 23px
-    border: solid 1px #ccc
-    margin: 0 -1px
-
-  .description
-    height: 67px
-
-    a.title
-      font-weight: bold
-      color: #1957bd
-      font-size: 140%
-
-    a.category
-      font-weight: bold
-      color: #000
-
-
 ul#categories-menu
 
   li
@@ -59,3 +36,69 @@ ul#categories-menu
 #directory
   .right
     margin: 10px 10px 0 0
+
+.directory-item
+  .images
+    height: 312px
+
+    .jcarousel-list
+      display: block
+      margin: 0
+      padding: 0
+      position: relative
+
+    .jcarousel-container
+      overflow: hidden
+
+    .jcarousel-item
+      width: 458px
+      height: 312px
+      float: left
+      margin: 0
+      padding: 0
+
+      img
+        margin: 0
+        padding: 0
+
+  .nav
+    height: 23px
+    border: solid 1px #ccc
+    margin: 0 -1px
+    position: relative
+    background:
+      image: url(/images/grad01.png)
+      repeat: repeat-x
+      position: bottom
+      color: #fff
+
+    .carousel-prev, .carousel-next
+      display: block
+      float: left
+      margin: 2px
+      height: 18px
+      width: 18px
+      color: transparent !important
+      background-repeat: no-repeat
+
+    .carousel-prev
+      background-image: url(/images/arrow.png)
+
+    .carousel-next
+      background-image: url(/images/arrow-right.png)
+
+    .carousel-prev.disable, .carousel-next.disable
+      opacity: 0.3
+      //display: none
+
+  .description
+    height: 67px
+
+    a.title
+      font-weight: bold
+      color: #1957bd
+      font-size: 140%
+
+    a.category
+      font-weight: bold
+      color: #000

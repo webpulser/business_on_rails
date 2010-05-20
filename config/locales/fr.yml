@@ -46,7 +46,7 @@ fr:
   contact:
     message: message
     send: envoyer
-  carrousel:
+  carousel:
     previous: image précédente
     next: image suivante
   pages:
