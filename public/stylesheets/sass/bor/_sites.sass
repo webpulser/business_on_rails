@@ -20,17 +20,23 @@ ul#categories-menu
   li
     display: block
     float: left
-    border-right: solid 1px #ccc
 
     a
-      padding: 8px 10px
       display: block
+      float: left
+      padding: 8px 10px
 
-  li.current
-    background-color: #faa
+    .sep
+      background:
+        image: url(/images/sep.png)
+        repeat: no-repeat
+        position: bottom right
 
-  li:hover
-    background-color: #ecc
+  li.current, li:hover
+    background:
+      image: url(/images/red_gradient.png)
+      repeat: repeat-x
+      position: bottom
 
 
 #directory

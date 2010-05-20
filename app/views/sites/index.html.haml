@@ -12,10 +12,10 @@
 
     %ul#categories-menu.backgrounds
       %li{ :class => "#{'current' unless params[:category_id]}" }
-        = link_to t('site.all_categories'), { :controller => 'sites' }
+        = link_to t('site.all_categories'), { :controller => 'sites' }, :class => 'sep'
       - SiteCategory.roots.each do |category|
         %li{ :class => "#{'current' if params[:category_id] == "#{category.id}"}" }
-          %a{ :href => "?category_id=#{category.id}" }
+          %a.sep{ :href => "?category_id=#{category.id}" }
             = category.name
       .clear
 
