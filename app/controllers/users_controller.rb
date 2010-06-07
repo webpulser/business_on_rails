@@ -6,6 +6,13 @@ class UsersController < ApplicationController
   end
 
   def update
+    if @user.update_attributes(params[:user])
+      flash[:notice] = t('user.update.success')
+      return redirect_to(retail_user_path)
+    else
+      flash[:error] = t('user.update.failed')
+      render :action => 'edit'
+    end
   end
 
   def logins
@@ -14,7 +21,7 @@ class UsersController < ApplicationController
 
 private
   def get_user
-    if @user.nil?
+    if current_user.nil?
       redirect_to login_path
     else
       @user = current_user
