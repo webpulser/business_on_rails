@@ -15,12 +15,13 @@
 
 body
   font-family: Arial,Helvetica,sans-serif
-  color: #000
-  text-decoration:none
+  color: $default_text_color
+  text-decoration: none
   margin: 0 auto
   padding: 0
-  background-image: url(/images/background.jpg)
-  background-position: center
+  background:
+    image: url(/images/background.jpg)
+    position: center
 
 
 .left
@@ -40,8 +41,6 @@ a
   text-decoration: none
 
 
-ul
-
 li, dl
   list-style-image: url(/images/dt-arrow.png)
 
@@ -60,123 +59,101 @@ dt
 
 
 .blue
-  color: #1957BD
+  color: $blue
 
 
 .brown
-  color: #603813
+  color: $brown
 
 
 .red
-  color: #f00
+  color: $red
 
 
 .helvet
-  font-family: Helvetica, Arial
+  font-family: Helvetica, Arial, sans-serif
 
 
 .surligne
-  background: #fff973
-  color: #000
+  background: $yellow
+  color: $default_text_color
   line-height: 16px
   font-size: 1.2em
-
-
-//.right
-//  float: right !important
-//  position: relative
-//  margin-bottom: 10px
-//  text-align: right
 
 
 .icons
   background: url(/images/csg-4bd18a026838c.png) no-repeat top left
 
+  &.account
+    background-position: 0 0
+    width: 13px
+    height: 12px
 
-.account
-  background-position: 0 0
-  width: 13px
-  height: 12px
-  display: inline-block
-  margin-left: 5px
-  padding-right: 5px
+  &.home
+    background-position: 0 -324px
+    width: 14px
+    height: 14px
 
+  &.mail
+    background-position: 0 -388px
+    width: 14px
+    height: 9px
 
-.black-arrow
-  background-position: 0 -62px
-  width: 19px
-  height: 19px
-  float: left
-  padding-bottom: 10px
-  padding-left: 5px
-  margin-left: 10px
+  &.arrow
+    width: 19px
+    height: 19px
+    &.black
+      background-position: 0 -62px
+      float: left
+      padding-bottom: 10px
+      padding-left: 5px
+      margin-left: 10px
+    &.blue
+      background-position: 0 -129px
+      margin-top: 12px
+      margin-left: 10px
 
+  &.checked
+    background-position: 0 -200px
+    width: 16px
+    height: 16px
 
-.blue-arrow
-  background-position: 0 -129px
-  width: 19px
-  height: 19px
-  margin-top: 12px
-  margin-left: 10px
-
-
-.checked
-  background-position: 0 -200px
-  width: 16px
-  height: 16px
-
-
-.dt-arrow
-  background-position: 0 -266px
-  width: 7px
-  height: 8px
-
-
-.home
-  background-position: 0 -324px
-  width: 14px
-  height: 14px
-  display: inline-block
-  margin-left: 5px
-  padding-right: 5px
-
-
-.mail
-  background-position: 0 -388px
-  width: 14px
-  height: 9px
-  display: inline-block
-  margin-left: 5px
-  padding-right: 5px
+  &.dt-arrow
+    background-position: 0 -266px
+    width: 7px
+    height: 8px
 
 
 .avantages li
   list-style-image: url(/images/checked.png)
   background-repeat: no-repeat
   font-size: 1.2em
-  padding-top: 5px
-  padding-bottom: 18px
+  margin-top: 5px
+  margin-bottom: 18px
 
-
-.actus
 
 .header
   font-size: 62.5%
   width: 100%
   display: inline
 
+  #top-menu .icons
+    margin-left: 8px
+    display: inline-block
+
   ul
     margin: 10px 0 0 0
     padding: 0
 
+  p, li
+    font-size: 1.2em
+
   li
     display: inline
-    font-weight: 1.2em
     list-style-type: none
 
   p
     margin-left: 5px
-    font-size: 1.2em
 
   span
     margin-bottom: 5px
@@ -190,29 +167,23 @@ dt
   margin-top: 10px
 
 
-.red-button-left
-  background-image: url(/images/btn_left.png)
-  background-repeat: no-repeat
-  height: 32px
-  width: 6px
-  float: left
-
-
-.red-button-right
-  background-image: url(/images/btn_right.png)
-  background-repeat: no-repeat
-  height: 32px
-  width: 6px
-  float: right
-  position: relative
-
-
 .red-button
   background-image: url(/images/btn.png)
   background-repeat: repeat-x
   float: left
   height: 32px
   width: 128px
+
+  &.side
+    width: 6px
+    background-repeat: no-repeat
+
+  &.left
+    background-image: url(/images/btn_left.png)
+
+  &.right
+    background-image: url(/images/btn_right.png)
+    position: relative
 
 
 .btn
@@ -230,6 +201,19 @@ dt
     font-size: 14px
     line-height: 28px
 
+  .footer
+    width: 928px
+    ul
+      display: inline
+      margin: 0
+      padding: 0
+    li
+      display: inline
+      margin: 0 10px
+    a
+      text-decoration: none
+      color: #fff
+      font-size: 12px
 
 .box
   width: 278px
@@ -242,34 +226,20 @@ dt
 
 
 .border
-  background-color: #fff
-  border: 1px solid #deaf7a
+  background-color: $default_bg_color
+  border: 1px solid $color_1
   font-size: 12px
-  margin-bottom: 20px
-  margin-left: 0
-  margin-right: 0
-  margin-top: 0
+  margin: 0 0 20px 0
+
+  h1, h2
+    margin: 0
 
   h1
-    padding-left: 10px
-    color: #f00
+    color: $default_text_color
     text-align: left
-    margin: 0
-    padding-top: 5px
-
-  h2
-    padding-left: 10px
-    margin: 0
-    padding-top: 5px
-    padding-bottom: 5px
 
   p
     text-align: left
-    padding-top: 5px
-    padding-bottom: 5px
-    padding-right: 10px
-    padding-left: 10px
-    margin: 0
 
   span
     font-weight: 1.4em
@@ -279,42 +249,30 @@ dt
     border: none
     position: center
 
+  &.padding
+    min-height: 180px
 
-.border.padding
+
+.padding
   padding: 10px
-  min-height: 180px
-
-
-.btn .footer
-  width: 928px
-
-  ul
-    display: inline
-    margin: 0
-    padding: 0
-
-  li
-    display: inline
-    margin: 0 10px
-
-  a
-    text-decoration: none
-    color: #fff
-    font-size: 12px
 
 
 .action-button
   +borderCorner(3px,3px,3px,3px)
-  background-color: #fff
-  background-position: 0 -1308px
-  border: 1px solid #d5d5d5
-  color: #006ebd
+  background:
+    color: #fff
+    position: 0 -1308px
+  border: 1px solid $light_gray
+  color: $blue
   cursor: pointer
   font-size: 12px
   font-weight: bold
   height: 16px
   padding: 3px 5px !important
   text-align: center
+
+  &.backgrounds
+    display: block
 
 
 input.action-button
@@ -325,21 +283,19 @@ input.action-button
   background:
     image: url(/images/admin/backgrounds-verti.png) !important
     repeat: repeat-x
-    color: #eaebec
+    color: $very_light_gray
 
 
-.backgrounds.action-button
-  display: block
+form
+  label, legend
+    color: $dark_gray
+    font-weight: bold
 
+  fieldset
+    +borderCorner
 
-label, legend
-  color: #4d4d4d
-  font-weight: bold
+  //input[@type='submit']
+  //  border: solid 1px $gray
 
-
-submit
-  border: solid 1px #b2b2b2
-
-
-.mandatory
-  color: #f05258
+  .mandatory
+    color: $mandatory_color
