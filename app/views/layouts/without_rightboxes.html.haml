@@ -5,8 +5,5 @@
   %body
     = render :partial => 'layouts/header'
     .container_12
-      .grid_8
-        = yield
-      .grid_4
-        = yield :rightboxes
+      = yield
     = render :partial => 'layouts/footer'

@@ -1,0 +1,9 @@
+.container_12
+  .grid_12
+    .btn
+      .red-button.side.left
+      .red-button.bold.footer
+        - footer_menu = Menu.find_by_single_key('footer-menu')
+        - if footer_menu
+          = display_menu(footer_menu, :li_current_class => 'active')
+      .red-button.side.right
