@@ -14,6 +14,11 @@ fr:
       other: catégories associées
     duplicate: dupliquer le site
     not_exist: "le site sélectionné n'existe pas"
+
+    index:
+      short_title: Annuaire
+      title: "Annuaire Business on Rails"
+      subtitle: "Sélection d'applications et sites web créés avec Ruby on Rails"
     new:
       title: "Ajouter un site à l'annuaire"
     edit:
@@ -40,9 +45,6 @@ fr:
     next: Suivant
     images: images du site
     add_image: ajouter une image
-    directory:
-      title: "Annuaire Business on Rails"
-      subtitle: "Sélection d'applications et sites web créés avec Ruby on Rails"
   contact:
     message: message
     send: envoyer
