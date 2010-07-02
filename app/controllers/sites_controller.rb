@@ -1,6 +1,7 @@
 class SitesController < ApplicationController
   before_filter :get_site, :only => [:show]
   before_filter :get_user_site, :only => [:edit, :update, :destroy]
+  layout :withoutrightboxes
 
   def index
     @per_page = 10
