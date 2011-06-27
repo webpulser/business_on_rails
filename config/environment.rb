@@ -8,5 +8,6 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
   config.gem 'acts-as-taggable-on'
+  config.gem 'aasm'
   config.plugins = [ :forgeos_core, :all ]
 end

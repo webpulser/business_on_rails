@@ -9,16 +9,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100518144730) do
+ActiveRecord::Schema.define(:version => 20110627090142) do
 
   create_table "actualities", :force => true do |t|
-    t.boolean  "active",              :default => true
+    t.boolean  "active",              :default => true, :null => false
     t.integer  "admin_id"
     t.integer  "widget_actuality_id"
     t.integer  "picture_id"
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "date"
+    t.integer  "administrator_id"
   end
 
   create_table "actuality_translations", :force => true do |t|
@@ -26,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20100518144730) do
     t.string   "locale"
     t.string   "title"
     t.text     "content"
+    t.text     "short_description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -66,6 +69,8 @@ ActiveRecord::Schema.define(:version => 20100518144730) do
     t.integer  "person_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
+    t.string   "alt"
   end
 
   create_table "block_translations", :force => true do |t|
@@ -102,8 +107,8 @@ ActiveRecord::Schema.define(:version => 20100518144730) do
     t.integer  "carousel_item_id"
     t.string   "locale"
     t.string   "title"
-    t.text     "description"
     t.string   "url"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -123,6 +128,7 @@ ActiveRecord::Schema.define(:version => 20100518144730) do
     t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position",                 :default => 0
   end
 
   add_index "categories", ["id", "type"], :name => "index_categories_on_id_and_type", :unique => true
@@ -130,6 +136,7 @@ ActiveRecord::Schema.define(:version => 20100518144730) do
   create_table "categories_elements", :id => false, :force => true do |t|
     t.integer "category_id"
     t.integer "element_id"
+    t.integer "position",    :default => 0, :null => false
   end
 
   add_index "categories_elements", ["category_id", "element_id"], :name => "index_categories_elements_on_category_id_and_element_id", :unique => true
@@ -137,8 +144,8 @@ ActiveRecord::Schema.define(:version => 20100518144730) do
   create_table "category_translations", :force => true do |t|
     t.integer  "category_id"
     t.string   "locale"
-    t.text     "description"
     t.string   "url"
+    t.text     "description"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -158,6 +165,22 @@ ActiveRecord::Schema.define(:version => 20100518144730) do
 
   add_index "comments", ["person_id"], :name => "fk_comments_person"
 
+  create_table "faq_translations", :force => true do |t|
+    t.integer  "faq_id"
+    t.string   "locale"
+    t.text     "answer"
+    t.string   "question"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "faq_translations", ["faq_id"], :name => "index_faq_translations_on_faq_id"
+
+  create_table "faqs", :force => true do |t|
+    t.integer "number"
+    t.integer "widget_faq_id"
+  end
+
   create_table "geo_zones", :force => true do |t|
     t.string  "iso"
     t.string  "iso3"
@@ -168,6 +191,15 @@ ActiveRecord::Schema.define(:version => 20100518144730) do
     t.integer "parent_id"
   end
 
+  create_table "import_sets", :force => true do |t|
+    t.text     "fields"
+    t.text     "parser_options"
+    t.boolean  "ignore_first_row", :default => true, :null => false
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "menu_link_translations", :force => true do |t|
     t.integer  "menu_link_id"
     t.string   "locale"
@@ -175,6 +207,7 @@ ActiveRecord::Schema.define(:version => 20100518144730) do
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "summary"
   end
 
   add_index "menu_link_translations", ["menu_link_id"], :name => "index_menu_link_translations_on_menu_link_id"
@@ -185,10 +218,11 @@ ActiveRecord::Schema.define(:version => 20100518144730) do
     t.integer  "parent_id"
     t.integer  "target_id"
     t.string   "target_type"
-    t.boolean  "active",      :default => true
+    t.boolean  "active",      :default => true,  :null => false
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "popup",       :default => false, :null => false
   end
 
   add_index "menu_links", ["menu_id", "active"], :name => "index_menu_links_on_menu_id_and_active"
@@ -197,10 +231,12 @@ ActiveRecord::Schema.define(:version => 20100518144730) do
   create_table "menus", :force => true do |t|
     t.string   "name"
     t.string   "single_key"
-    t.boolean  "active",     :default => true
+    t.boolean  "active",     :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "menus", ["single_key"], :name => "index_menus_on_single_key", :unique => true
 
   create_table "meta_info_translations", :force => true do |t|
     t.integer  "meta_info_id"
@@ -217,6 +253,12 @@ ActiveRecord::Schema.define(:version => 20100518144730) do
   create_table "meta_infos", :force => true do |t|
     t.integer "target_id"
     t.string  "target_type"
+  end
+
+  create_table "newsletters", :force => true do |t|
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "page_col_translations", :force => true do |t|
@@ -245,10 +287,13 @@ ActiveRecord::Schema.define(:version => 20100518144730) do
   create_table "pages", :force => true do |t|
     t.string   "single_key"
     t.integer  "section_id"
-    t.boolean  "active",       :default => true
+    t.boolean  "active",       :default => true, :null => false
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "page_code"
+    t.text     "header_code"
+    t.text     "bottom_code"
   end
 
   create_table "pages_links", :id => false, :force => true do |t|
@@ -274,15 +319,17 @@ ActiveRecord::Schema.define(:version => 20100518144730) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "civility"
-    t.string   "persistence_token",                                :null => false
-    t.integer  "login_count",                       :default => 0, :null => false
-    t.integer  "failed_login_count",                :default => 0, :null => false
+    t.string   "persistence_token",                                    :null => false
+    t.integer  "login_count",                       :default => 0,     :null => false
+    t.integer  "failed_login_count",                :default => 0,     :null => false
     t.datetime "last_request_at"
     t.datetime "current_login_at"
     t.datetime "last_login_at"
     t.string   "current_login_ip"
     t.string   "last_login_ip"
-    t.boolean  "active"
+    t.boolean  "active",                            :default => false, :null => false
+    t.boolean  "delta",                             :default => true,  :null => false
+    t.string   "perishable_token"
   end
 
   create_table "rights", :force => true do |t|
@@ -298,7 +345,7 @@ ActiveRecord::Schema.define(:version => 20100518144730) do
 
   create_table "roles", :force => true do |t|
     t.string   "name"
-    t.boolean  "active",     :default => true
+    t.boolean  "active",     :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -307,12 +354,12 @@ ActiveRecord::Schema.define(:version => 20100518144730) do
     t.text    "conditions"
     t.text    "description"
     t.text    "variables"
-    t.integer "use",         :default => 0, :null => false
-    t.integer "max_use",     :default => 0, :null => false
+    t.integer "use",         :default => 0,    :null => false
+    t.integer "max_use",     :default => 0,    :null => false
     t.string  "name"
     t.string  "type"
     t.string  "code"
-    t.boolean "active"
+    t.boolean "active",      :default => true, :null => false
     t.integer "parent_id"
   end
 
@@ -338,8 +385,8 @@ ActiveRecord::Schema.define(:version => 20100518144730) do
   create_table "site_translations", :force => true do |t|
     t.integer  "site_id"
     t.string   "locale"
-    t.text     "description"
     t.string   "url"
+    t.text     "description"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
