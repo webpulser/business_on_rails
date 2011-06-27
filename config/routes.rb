@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+  map.root :controller => 'pages', :action => 'index'
   map.resources :sites
   map.resource :contact
   map.resources :users, :collection => { :logins => :get}
@@ -11,5 +12,5 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 
-  map.page '*url', :controller => 'url_catcher', :action => 'page'
+  map.page '*url', :controller => 'pages', :action => 'show'
 end

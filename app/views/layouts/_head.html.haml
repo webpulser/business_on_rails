@@ -1,14 +1,10 @@
 %title
-  = t('project_name')
-  - if @controller.is_a? UrlCatcherController
-    = ":: #{@page.title}" if @page
+  - if @controller.controller_name == 'pages' and @page.title
+    = @page.title
   - else
-    - begin
-      - subtitle = t("#{@controller.controller_name.singularize}.#{params[:action]}.title", options={})
-      = ":: #{subtitle}" if subtitle
-    - rescue I18n::MissingTranslationData
-      -#FIXME
-      erf
+    = t("#{@controller.controller_name.singularize}.#{params[:action]}.title", options={})
+  |
+  = Setting.current.name
 %meta{ 'http-equiv'=>'Content-Type', :content=>'text/html; charset=utf-8' }
 %link{ :href => 'favicon.ico', :rel => 'icon', :type => 'image/x-icon' }
 %link{ :href => 'favicon.ico', :rel => 'shortcut icon', :type => 'image/x-icon' }

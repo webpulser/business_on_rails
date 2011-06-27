@@ -4,30 +4,32 @@
       .logo
     .grid_10
       %ul#top-menu.right
-        - [["home", "Accueil", "#{Page.find_by_single_key('home').url}"], |
-           ["account", "Mon compte", "/user"],                            |
-           ["mail", "Contactez-nous", "#"]                                |
-          ].each do |c, t, h|                                             |
+        :ruby
+          entries = [
+           ["home", "Accueil", Page.find_by_single_key('home').url],
+           ["account", "Mon compte", "/user"],
+           ["mail", "Contactez-nous", "#"]
+          ]
+        - entries.each do |c, t, h|
           %li
-            .icons{ :class => "#{c}" }
-            %a.brown{ :href => "#{h}" }
-              = t
+            .icons{ :class => c }
+            = link_to t, h, :class => 'brown'
 
     .grid_2
     -#TODO add the possibility to describe a menu link
-    - [["Ruby on Rails", "Découvrez le framework de développement agile", "#"],      |
-       ["Témoignages", "Pourquoi ils ont adopté Ruby on Rails ?", "#"],              |
-       ["annuaire", "sites et applications réalisées avec ruby on rails", "/sites"], |
-       ["Actualités", "Dernières news autour du framework", "#"],                    |
-       ["Job on Rails", "Offres et demande d’emploi d’experts", "#"]                 |
-      ].each do |t, d, h|                                                            |
+    :ruby
+      entries = [
+        ["Ruby on Rails", "Découvrez le framework de développement agile", "#"],
+        ["Témoignages", "Pourquoi ils ont adopté Ruby on Rails ?", "#"],
+        ["annuaire", "sites et applications réalisées avec ruby on rails", "/sites"],
+        ["Actualités", "Dernières news autour du framework", "#"],
+        ["Job on Rails", "Offres et demande d’emploi d’experts", "#"]
+      ]
+    - entries.each do |t, d, h|
       .grid_2
         .btn
           .red-button.side.left
-          .red-button.bold
-            %a{ :href => "#{h}", :title => "#{d}" }
-              = t
+          .red-button.bold= link_to t, h, :title => d
           .red-button.side.right
-        %p.brown.bold
-          = d
+        %p.brown.bold= d
   .clear
