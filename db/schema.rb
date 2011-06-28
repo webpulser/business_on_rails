@@ -380,6 +380,7 @@ ActiveRecord::Schema.define(:version => 20110627090142) do
     t.text    "smtp_settings"
     t.text    "sendmail_settings"
     t.integer "address_id"
+    t.text    "attachments"
   end
 
   create_table "site_translations", :force => true do |t|
