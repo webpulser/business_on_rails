@@ -5,20 +5,21 @@
     - else
       %h1= @page.title
 
-    = @page.page_cols.first.content
-    - @page.page_cols.first.blocks.each do |block|
-      - unless block.content.blank?
-        .border.padding= block.content
+    - if first_col = @page.page_cols.first
+      = first_col.content
+      - first_col.blocks.each do |block|
+        - unless block.content.blank?
+          .border.padding= block.content
 
   - content_for :rightboxes do
-    - blocks = @page.content.last + @page.page_cols.last.content
-    - @page.page_cols.last.blocks.each do |block|
-      - unless block.content.blank?
-        .border.avantages.padding= block.content
+    - if second_col = @page.page_cols.last
+      - second_col.blocks.each do |block|
+        - unless block.content.blank?
+          .border.avantages.padding= block.content
   - if @page.meta_info
     - content_for :title, @page.meta_info.title
     - content_for :meta_description, @page.meta_info.description
     - content_for :meta_keywords, @page.meta_info.keywords
-
+  = statistics_collector_tag(@page)
 - else
   = t('page.not_found').capitalize
