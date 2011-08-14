@@ -5,7 +5,7 @@ gem 'rails', '3.1.0.rc5'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+gem 'mysql2'
 
 gem 'json'
 
@@ -15,6 +15,7 @@ group :assets do
   gem 'sass-rails', "~> 3.1.0.rc"
   gem 'coffee-rails', "~> 3.1.0.rc"
   gem 'uglifier'
+  gem 'compass', :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31'
 end
 
 gem 'jquery-rails'
@@ -39,7 +40,7 @@ gem 'sass', '>= 3.1.4'
 gem 'mime-types', '>= 1.16'
 gem 'thinking-sphinx', '>= 2.0.5'
 gem 'webpulser-habtm_list', '>= 0.1.2'
-gem 'will_paginate', '~> 3.0.pre2'
+gem 'will_paginate', '~> 3.0'
 gem 'authlogic', '>= 3.0.3'
 gem 'forgeos_core', :path => 'vendor/gems/forgeos_core'
 

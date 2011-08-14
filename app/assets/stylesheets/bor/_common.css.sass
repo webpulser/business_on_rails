@@ -1,78 +1,64 @@
-=borderCorner(!topLeft=4px,!topRight=4px,!bottomRight=4px,!bottomLeft=4px)
-  :-moz-border-radius-topleft = !topLeft
-  :-moz-border-radius-topright = !topRight
-  :-moz-border-radius-bottomright = !bottomRight
-  :-moz-border-radius-bottomleft = !bottomLeft
-  :-webkit-border-top-left-radius = !topLeft
-  :-webkit-border-top-right-radius = !topRight
-  :-webkit-border-bottom-right-radius = !bottomRight
-  :-webkit-border-bottom-left-radius = !bottomLeft
-  :border-top-left-radius = !topLeft
-  :border-top-right-radius = !topRight
-  :border-bottom-right-radius = !bottomRight
-  :border-bottom-left-radius = !bottomLeft
-
+=borderCorner($topLeft: 4px, $topRight: 4px, $bottomRight: 4px, $bottomLeft: 4px)
+  -moz-border-radius-topleft: $topLeft
+  -moz-border-radius-topright: $topRight
+  -moz-border-radius-bottomright: $bottomRight
+  -moz-border-radius-bottomleft: $bottomLeft
+  -webkit-border-top-left-radius: $topLeft
+  -webkit-border-top-right-radius: $topRight
+  -webkit-border-bottom-right-radius: $bottomRight
+  -webkit-border-bottom-left-radius: $bottomLeft
+  border-top-left-radius: $topLeft
+  border-top-right-radius: $topRight
+  border-bottom-right-radius: $bottomRight
+  border-bottom-left-radius: $bottomLeft
 
 body
-  font-family: Arial,Helvetica,sans-serif
+  font-family: Arial, Helvetica, sans-serif
   color: $default_text_color
   text-decoration: none
   margin: 0 auto
   padding: 0
   background:
-    image: url(/images/background.jpg)
+    image: url(/assets/bor/background.jpg)
     position: center
-
 
 .left
   float: left
 
-
 .right
   float: right
-
 
 div
   margin: auto
   padding: auto
 
-
 a
   text-decoration: none
 
-
 li, dl
-  list-style-image: url(/images/dt-arrow.png)
-
+  list-style-image: url(/assets/bor/dt-arrow.png)
 
 dd
   padding-left: 10px
   margin: 0
 
-
 dt
   padding-left: 10px
-
 
 .bold
   font-weight: bold
 
-
 .blue
   color: $blue
-
 
 .brown
   color: $brown
 
-
 .red
   color: $red
 
-
 .helvet
   font-family: Helvetica, Arial, sans-serif
-
 
 .surligne
   background: $yellow
@@ -80,25 +66,20 @@ dt
   line-height: 16px
   font-size: 1.2em
 
-
 .icons
-  background: url(/images/csg-4bd18a026838c.png) no-repeat top left
-
+  background: url(/assets/bor/icons.png) no-repeat top left
   &.account
     background-position: 0 0
     width: 13px
     height: 12px
-
   &.home
     background-position: 0 -324px
     width: 14px
     height: 14px
-
   &.mail
     background-position: 0 -388px
     width: 14px
     height: 9px
-
   &.arrow
     width: 19px
     height: 19px
@@ -112,79 +93,59 @@ dt
       background-position: 0 -129px
       margin-top: 12px
       margin-left: 10px
-
   &.checked
     background-position: 0 -200px
     width: 16px
     height: 16px
-
   &.dt-arrow
     background-position: 0 -266px
     width: 7px
     height: 8px
 
-
 .avantages li
-  list-style-image: url(/images/checked.png)
+  list-style-image: url(/assets/bor/checked.png)
   background-repeat: no-repeat
   font-size: 1.2em
   margin-top: 5px
   margin-bottom: 18px
 
-
 .header
   font-size: 62.5%
   width: 100%
   display: inline
-
   #top-menu .icons
     margin-left: 8px
     display: inline-block
-
   ul
     margin: 10px 0 0 0
     padding: 0
-
   p, li
     font-size: 1.2em
-
   li
     display: inline
     list-style-type: none
-
   p
     margin-left: 5px
-
   span
     margin-bottom: 5px
 
-
 .logo
-  background-image: url(/images/logo-bor.png)
+  background-image: url(/assets/bor/logo-bor.png)
   background-repeat: no-repeat
   height: 123px
   width: 112px
   margin-top: 10px
 
-
 .red-button
-  background-image: url(/images/btn.png)
-  background-repeat: repeat-x
-  float: left
+  +inline-block
+  +border-radius(4px)
+  +box-shadow(gray 0 1px 2px)
+  +text-shadow(gray 0 1px 1px)
+  +background(linear-gradient(top, $red, #a20500),image-url("/assets/bor/btn.png"))
+  border: 1px solid #c1272d
+  border-top: 0px
   height: 32px
   width: 128px
-
-  &.side
-    width: 6px
-    background-repeat: no-repeat
-
-  &.left
-    background-image: url(/images/btn_left.png)
-
-  &.right
-    background-image: url(/images/btn_right.png)
-    position: relative
-
 
 .btn
   text-align: center
@@ -195,12 +156,10 @@ dt
   display: block
   margin-bottom: 5px
   margin-top: 5px
-
   a
-    color: #fff
+    color: white
     font-size: 14px
     line-height: 28px
-
   .footer
     width: 928px
     ul
@@ -212,7 +171,7 @@ dt
       margin: 0 10px
     a
       text-decoration: none
-      color: #fff
+      color: white
       font-size: 12px
 
 .box
@@ -224,43 +183,34 @@ dt
   margin-left: 10px
   display: inline
 
-
 .border
   background-color: $default_bg_color
   border: 1px solid $color_1
   font-size: 12px
   margin: 0 0 20px 0
-
   h1, h2
     margin: 0
-
   h1
     color: $default_title_color
     text-align: left
-
   p
     text-align: left
-
   span
     font-weight: 1.4em
-
   img
     margin: 10px
     border: none
     position: center
-
   &.padding
     min-height: 180px
-
 
 .padding
   padding: 10px
 
-
 .action-button
-  +borderCorner(3px,3px,3px,3px)
+  +borderCorner(3px, 3px, 3px, 3px)
   background:
-    color: #fff
+    color: white
     position: 0 -1308px
   border: 1px solid $light_gray
   color: $blue
@@ -270,32 +220,25 @@ dt
   height: 16px
   padding: 3px 5px !important
   text-align: center
-
   &.backgrounds
     display: block
-
 
 input.action-button
   height: 24px
 
-
 .backgrounds
   background:
-    image: url(/images/admin/backgrounds-verti.png) !important
+    image: url(/assets/bor/admin/backgrounds-verti.png) !important
     repeat: repeat-x
     color: $very_light_gray
-
 
 form
   label, legend
     color: $dark_gray
     font-weight: bold
-
   fieldset
     +borderCorner
-
   //input[@type='submit']
   //  border: solid 1px $gray
-
   .mandatory
     color: $mandatory_color

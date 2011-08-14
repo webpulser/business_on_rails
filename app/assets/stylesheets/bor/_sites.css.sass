@@ -1,7 +1,6 @@
 ul#categories-menu, ul#site-list
   padding: 0
   margin: 0
-
   li
     list-style: none
     a
@@ -10,7 +9,6 @@ ul#categories-menu, ul#site-list
     &.current
       a
         color: $dark_red
-
 
 ul#categories-menu
   li
@@ -22,20 +20,18 @@ ul#categories-menu
       padding: 8px 10px
     .sep
       background:
-        image: url(/images/sep.png)
+        image: url(/assets/bor/sep.png)
         repeat: no-repeat
         position: bottom right
     &.current, &:hover
       background:
-        image: url(/images/red_gradient.png)
+        image: url(/assets/bor/red_gradient.png)
         repeat: repeat-x
         position: bottom
 
-
 .directory-item
-  $jcarousel_height = 312px
-  $jcarousel_width = 458px
-
+  $jcarousel_height: 312px
+  $jcarousel_width: 458px
   .images
     height: $jcarousel_height
     .jcarousel-list
@@ -54,17 +50,16 @@ ul#categories-menu
       img
         margin: 0
         padding: 0
-
   .nav
     height: 23px
-    border: solid 1px #ccc
+    border: solid 1px #cccccc
     margin: 0 -1px
     position: relative
     background:
-      image: url(/images/grad01.png)
+      image: url(/assets/bor/grad01.png)
       repeat: repeat-x
       position: bottom
-      color: #fff
+      color: white
     .carousel-prev, .carousel-next
       display: block
       float: left
@@ -73,7 +68,7 @@ ul#categories-menu
       width: 18px
       color: transparent !important
       background:
-        image: url(/images/arrows.png)
+        image: url(/assets/bor/arrows.png)
         position: 0 0
         repeat: no-repeat
     .carousel-next
@@ -81,7 +76,6 @@ ul#categories-menu
       &.disable, &.disable
         opacity: 0.2
         //display: none
-
   .description
     height: 67px
     a
@@ -93,10 +87,9 @@ ul#categories-menu
         font-weight: bold
         color: $default_text_color
 
-
 .button-add
   background:
-    image: url(/images/admin/small-icons/big-blue-plus.png)
+    image: url(/assets/bor/admin/small-icons/big-blue-plus.png)
     repeat: no-repeat
     position: top left
   color: $blue_lighter
