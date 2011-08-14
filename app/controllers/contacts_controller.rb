@@ -12,8 +12,8 @@ class ContactsController < ApplicationController
     mail_params = params[:contact]
     respond_to do |format|
       begin
-        email = Notifier.deliver_sent(mail_params)
-        email = Notifier.deliver_confirm(mail_params)
+        email = Notifier.sent(mail_params)
+        email = Notifier.confirm(mail_params)
       rescue Exception => e
         flash[:error] = "Problème durant l'envoie du message"
         logger.error "Erreur envoi message : #{e.message}"

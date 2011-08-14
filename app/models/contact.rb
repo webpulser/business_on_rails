@@ -1,6 +1,6 @@
 class Contact < ActiveRecord::Base
-  validates_presence_of :firstname, :lastname, :email, :firm, :message
-  validates_format_of   :email, :with => /^\S+\@(\[?)[a-zA-Z0-9\-\.]+\.([a-zA-Z]{2,4}|[0-9]{1,4})(\]?)$/ix
+  validates :firstname, :lastname, :firm, :message, :presence => true
+  validates :email, :format => /^\S+\@(\[?)[a-zA-Z0-9\-\.]+\.([a-zA-Z]{2,4}|[0-9]{1,4})(\]?)$/ix, :presence => true
 
   column :email, :string
   column :firm, :string

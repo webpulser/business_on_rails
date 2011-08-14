@@ -1,16 +1,27 @@
-ActionController::Routing::Routes.draw do |map|
-  map.root :controller => 'pages', :action => 'index'
-  map.resources :sites
-  map.resource :contact
-  map.resources :users, :collection => { :logins => :get}
+BusinessOnRails::Application.routes.draw do
 
-  map.namespace :admin do |admin|
-    admin.resources :sites, :member => { :activate => :post, :duplicate => :get}
-    admin.resources "site_categories", :controller => 'categories', :requirements => { :type => "site_category" }
+  root :to => 'pages#index'
+  resources :sites
+  resource :contact
+
+  resources :users do
+    collection do
+      get :logins
+    end
   end
 
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  namespace :admin do
+    resources :sites do
+      member do
+        post :activate
+        get :duplicate
+      end
+    end
 
-  map.page '*url', :controller => 'pages', :action => 'show'
+    resources :site_categories, :controller => 'categories', :type => 'site_category'
+  end
+
+  mount Forgeos::Core::Engine => '/', :as => 'forgeos_core'
+  mount Forgeos::Cms::Engine => '/', :as => 'forgeos_cms'
+
 end

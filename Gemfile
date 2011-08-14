@@ -1,33 +1,51 @@
-source :rubygems
-gem 'aasm', '2.1.5'
-gem 'actionmailer', '2.3.8'
-gem 'actionpack', '2.3.8'
-gem 'activerecord', '2.3.8'
-gem 'activeresource', '2.3.8'
-gem 'activesupport', '2.3.8'
-gem 'acts-as-taggable-on', '2.0.6'
-gem 'acts_as_commentable', '3.0.0'
-gem 'acts_as_list', '0.1.2'
-gem 'acts_as_tree', '0.1.1'
-gem 'after_commit', '1.0.7'
-gem 'ar-extensions', '0.9.3'
-gem 'authlogic', '2.1.5'
-gem 'bcrypt-ruby', '2.1.2'
-gem 'fastercsv', '1.5.4'
-gem 'fastthread', '1.0.7'
-gem 'globalize2', '0.2.1'
-gem 'haml', '3.0.25'
-gem 'mime-types', '1.16'
-gem 'rack', '1.1.0'
-gem 'rails', '2.3.8'
-gem 'rake', '0.8.7'
-gem 'responds_to_parent', '1.0.20091013'
-gem 'riddle', '1.0.11'
-gem 'rmagick', '2.13.1'
-gem 'ruby-mysql', '2.9.3'
-gem 'ruleby', '0.6'
-gem 'sitemap_generator', '1.3.7'
-gem 'thinking-sphinx', '1.3.18'
-gem 'webpulser-habtm_list', '0.1.2'
-gem 'webpulser-jrails', '0.6.0'
-gem 'will_paginate', '2.3.14'
+source 'http://rubygems.org'
+
+gem 'rails', '3.1.0.rc5'
+
+# Bundle edge Rails instead:
+# gem 'rails',     :git => 'git://github.com/rails/rails.git'
+
+gem 'sqlite3'
+
+gem 'json'
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails', "~> 3.1.0.rc"
+  gem 'coffee-rails', "~> 3.1.0.rc"
+  gem 'uglifier'
+end
+
+gem 'jquery-rails'
+
+# Use unicorn as the web server
+# gem 'unicorn'
+
+# Deploy with Capistrano
+# gem 'capistrano'
+
+# To use debugger
+# gem 'ruby-debug'
+gem 'rmagick'
+gem 'globalize3', '>= 0.1.0'
+gem 'acts-as-taggable-on', '>= 2.0.6'
+gem 'acts_as_list', '>= 0.1.3'
+gem 'acts_as_tree', '>= 0.1.1'
+gem 'bcrypt-ruby', '>= 2.1.4'
+gem 'fastercsv', '>= 1.5.4'
+gem 'haml', '>= 3.1.2'
+gem 'sass', '>= 3.1.4'
+gem 'mime-types', '>= 1.16'
+gem 'thinking-sphinx', '>= 2.0.5'
+gem 'webpulser-habtm_list', '>= 0.1.2'
+gem 'will_paginate', '~> 3.0.pre2'
+gem 'authlogic', '>= 3.0.3'
+gem 'forgeos_core', :path => 'vendor/gems/forgeos_core'
+
+gem 'acts_as_commentable', '>= 3.0.1'
+gem 'forgeos_cms', :path => 'vendor/gems/forgeos_cms'
+
+gem 'aasm', '>= 2.2.0'
+gem 'rakismet', '>= 1.1.0'
+gem 'squeel'

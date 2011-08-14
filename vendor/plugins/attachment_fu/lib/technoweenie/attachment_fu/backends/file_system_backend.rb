@@ -25,7 +25,7 @@ module Technoweenie # :nodoc:
       
         # Used as the base path that #public_filename strips off full_filename to create the public path
         def base_path
-          @base_path ||= File.join(RAILS_ROOT, 'public')
+          @base_path ||= File.join(Rails.root, 'public')
         end
       
         # The attachment ID used in the full path of a file
